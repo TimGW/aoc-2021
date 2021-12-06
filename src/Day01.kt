@@ -1,18 +1,7 @@
 fun main() {
-    fun part1(input: List<Int>): Int {
-        val iterator = input.listIterator(1) // skip first index since it has no previous
-        var counter = 0
+    fun part1(input: List<Int>) = input.windowed(2).count { it.last() > it.first() }
 
-        while (iterator.hasNext()) if (input[iterator.previousIndex()] < iterator.next()) counter++
-
-        return counter
-    }
-
-    fun part2(input: List<Int>) = input
-        .windowed(3)
-        .map { it.sum() }
-        .windowed(2)
-        .count { it.last() > it.first() }
+    fun part2(input: List<Int>) = part1(input.windowed(3).map { it.sum() })
 
     // test if implementation meets criteria from the description, like:
     val testInput = readIntInput("Day01_test")
