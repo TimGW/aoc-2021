@@ -1,6 +1,12 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        val numberInput = input.map { it.toInt() }
+        val iterator = numberInput.listIterator(1) // skip first index since it has no previous
+        var counter = 0
+
+        while (iterator.hasNext()) if (numberInput[iterator.previousIndex()] < iterator.next()) counter++
+
+        return counter
     }
 
     fun part2(input: List<String>): Int {
