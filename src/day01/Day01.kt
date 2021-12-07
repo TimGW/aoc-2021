@@ -1,3 +1,7 @@
+package day01
+
+import readIntInput
+
 fun main() {
     fun part1(input: List<Int>) = input.windowed(2).count { it.last() > it.first() }
 
